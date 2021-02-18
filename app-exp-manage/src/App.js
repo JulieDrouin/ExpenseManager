@@ -1,15 +1,41 @@
-import "./App.css";
-import ModeDark from "../src/components/ModeDark";
+// import "./App.css";
+// import ModeDark from "../src/components/ModeDark";
 import "./scss/styles.scss";
 
-function App() {
+import React, { useState, useEffect } from "react";
+import { ThemeProvider } from "styled-components";
+import { useDarkMode } from "./components/UseDarkMode";
+import { GlobalStyles } from "./components/GlobalStyles";
+import { lightTheme, darkTheme } from "./components/Theme";
+import FormDepens from "./components/FormDepens";
+import FormBudget from "./components/FormBudget";
+import "./App.css";
+import Header from "./components/Header";
+import { Form, Button, Card, Container, Col, Row } from "react-bootstrap";
+
+const App = () => {
+  const [theme, themeToggler] = useDarkMode();
+
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
+
   return (
-    <div className="app">
-      <h1>Gestionnaire de dépenses</h1>
-      <ModeDark />
-
-    </div>
+    <ThemeProvider theme={themeMode}>
+      <>
+        <GlobalStyles />
+        <div className="App">
+          <Header theme={theme} toggleTheme={themeToggler} />
+          <Container />
+          <Row>
+            <Col>
+              <FormBudget style={{fontFamily: 'Oswald'}}/>
+            </Col>
+            <Col>
+              <FormDepens style={{fontFamily: 'Oswald'}}/>
+            </Col>
+          </Row>
+        </div>
+      </>
+    </ThemeProvider>
   );
-}
-
+};
 export default App;
