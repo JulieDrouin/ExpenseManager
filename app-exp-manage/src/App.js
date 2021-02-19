@@ -4,14 +4,16 @@ import "./scss/styles.scss";
 
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
-import { useDarkMode } from "./components/UseDarkMode";
-import { GlobalStyles } from "./components/GlobalStyles";
-import { lightTheme, darkTheme } from "./components/Theme";
+import { useDarkMode } from "./components/DarkMode/UseDarkMode";
+import { GlobalStyles } from "./components/DarkMode/GlobalStyles";
+import { lightTheme, darkTheme } from "./components/DarkMode/Theme";
 import FormDepens from "./components/FormDepens";
 import FormBudget from "./components/FormBudget";
+import Header from "./components/Header/Header";
+import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
 import { Form, Button, Card, Container, Col, Row } from "react-bootstrap";
+import AllRoutes from "./components/router/AllRoutes";
 
 const App = () => {
   const [theme, themeToggler] = useDarkMode();
@@ -19,23 +21,25 @@ const App = () => {
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <>
+    <BrowserRouter>
+      <ThemeProvider theme={themeMode}>
         <GlobalStyles />
         <div className="App">
           <Header theme={theme} toggleTheme={themeToggler} />
-          <Container />
-          <Row>
+          <Container>
+            <AllRoutes/>
+          {/* <Row>
             <Col>
-              <FormBudget style={{fontFamily: 'Oswald'}}/>
+              <FormBudget style={{ fontFamily: "Oswald" }} />
             </Col>
             <Col>
-              <FormDepens style={{fontFamily: 'Oswald'}}/>
+              <FormDepens style={{ fontFamily: "Oswald" }} />
             </Col>
-          </Row>
+          </Row> */}
+          </Container>
         </div>
-      </>
-    </ThemeProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 export default App;
