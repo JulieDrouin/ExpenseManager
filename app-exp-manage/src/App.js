@@ -1,18 +1,13 @@
-// import "./App.css";
-// import ModeDark from "../src/components/ModeDark";
 import "./scss/styles.scss";
-
-import React, { useState, useEffect } from "react";
+import "./App.css";
+import { React } from "react";
 import { ThemeProvider } from "styled-components";
 import { useDarkMode } from "./components/DarkMode/UseDarkMode";
 import { GlobalStyles } from "./components/DarkMode/GlobalStyles";
 import { lightTheme, darkTheme } from "./components/DarkMode/Theme";
-import FormDepens from "./components/FormDepens";
-import FormBudget from "./components/FormBudget";
+import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header";
-import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
-import "./App.css";
-import { Form, Button, Card, Container, Col, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import AllRoutes from "./components/router/AllRoutes";
 
 const App = () => {
@@ -27,15 +22,7 @@ const App = () => {
         <div className="App">
           <Header theme={theme} toggleTheme={themeToggler} />
           <Container>
-            <AllRoutes/>
-          {/* <Row>
-            <Col>
-              <FormBudget style={{ fontFamily: "Oswald" }} />
-            </Col>
-            <Col>
-              <FormDepens style={{ fontFamily: "Oswald" }} />
-            </Col>
-          </Row> */}
+            <AllRoutes />
           </Container>
         </div>
       </ThemeProvider>
