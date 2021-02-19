@@ -8,7 +8,7 @@ const NavBar = ({ theme, toggleTheme }) => {
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-center">
         <Nav className="">
-          <Nav.Link href="/profil">Mon profil</Nav.Link>
+          <Nav.Link href="/user/profilInfo">Mon profil</Nav.Link>
           <NavDropdown title="Mon budget" id="basic-nav-dropdown">
             <NavDropdown.Item href="/gain/2.gainList">
               Voir tout mes gains

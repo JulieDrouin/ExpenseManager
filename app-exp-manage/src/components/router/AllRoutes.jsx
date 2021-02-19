@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-// import ProfilInfo from '../user/ProfilInfo';
+import ProfilInfo from '../user/ProfilInfo';
 // import ProfilNew from '../user/ProfilNew';
 // import ProfilEdit from '../user/ProfilEdit';
 // import ProfilDelete from '../user/ProfilDelete';
@@ -25,8 +25,8 @@ const AllRoutes = (props) => {
   return (
     <Switch>
       <Route exact path="/gain/2.gainList" component={FormBudget} />
-      {/* <Route exact path="/profil" component={Profil} />
-        <Route exact path="/gain/2.gainList" component={GainList} />
+       <Route exact path="/user/profilInfo" component={ProfilInfo} />
+      {/*  <Route exact path="/gain/2.gainList" component={GainList} />
         <Route exact path="/gain/2.gainNew" component={GainNew} />
         <Route exact path="/gain/2.gainEdit" component={GainEdit} />
         <Route exact path="/gain/2.gainDelete" component={GainDelete} />
