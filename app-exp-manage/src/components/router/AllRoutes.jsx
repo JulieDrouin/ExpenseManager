@@ -24,6 +24,7 @@ import FormBudget from "../FormBudget";
 const AllRoutes = (props) => {
   return (
     <Switch>
+      <Route exact path="/user/profilInfo" component={ProfilInfo} />
       <Route exact path="/gain/2.gainList" component={FormBudget} />
        <Route exact path="/user/profilInfo" component={ProfilInfo} />
       {/*  <Route exact path="/gain/2.gainList" component={GainList} />

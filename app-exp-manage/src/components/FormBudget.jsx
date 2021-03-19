@@ -2,42 +2,58 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 
 const FormBudget = () => {
-  const [gain, setGain] = useState({
-    name: "",
-    value: "",
-  });
+  const gains = {
+    name: "Salaire",
+    value: 3000
+  }
+
+  // const [gains, setGain] = useState({
+  //   name: "Salaire",
+  //   value: 3000,
+  // });
+  const [newGain, setNewGains] = useState({ gains });
+
   const [isErrorMessageDisplayed, setErrorMessageDisplayState] = useState(
     false
   );
 
-  useEffect(
-    function () {
-      if (gain.name.length > 30) {
-        // Si le name mesure plus de 30 caractères de long
-        setErrorMessageDisplayState(true); // Afficher le message d'erreur
-      } else {
-        setErrorMessageDisplayState(false); // Sinon ne pas l'afficher
-      }
-    },
-    [gain.name]
-  );
+  // useEffect(
+  //   function () {
+  //     if (gains.name.length > 30) {
+  //       // Si le name mesure plus de 30 caractères de long
+  //       setErrorMessageDisplayState(true); // Afficher le message d'erreur
+  //     } else {
+  //       setErrorMessageDisplayState(false); // Sinon ne pas l'afficher
+  //     }
+  //   },
+  //   [gains.name]
+  // );
 
-  function updateNamegain(event) {
-    setGain({
-      ...gain,
-      name: event.target.value,
+  // function handleChangeFields(event) {
+  //   setGain({
+  //     ...gains,
+  //     [event.target.name]: event.target.value,
+  //     [event.target.value]: event.target.value,
+  //   });
+  // }
+  // function handleChangeFields(event) {
+  //   setGain(gains => ({
+  //     ...gains,
+  //     [event.target.name]: event.target.value,
+  //     [event.target.value]: event.target.value,}));
+  // }
+  function handleChangeFields(event) {
+    setNewGains({
+      ...newGain,
+      [event.target.name]: event.target.value,
+      [event.target.value]: event.target.value,
     });
   }
-  function updateValuegain(event) {
-    setGain({
-      ...gain,
-      value: event.target.value,
-    });
-  }
 
+  // const contacts = gains.map((elem) => < div > {elem} < /div>)
   return (
     <>
-      <Form style={{ backgroundColor: "#48D1CC" }}>
+      <Form style={{ backgroundColor: "#48D1CC"}}>
         <Form.Group controlId="formName">
           <Form.Label>Ajouter un gain:</Form.Label>
           <Form.Control
@@ -45,8 +61,8 @@ const FormBudget = () => {
             type="text"
             placeholder="Entrez un gain"
             name="name"
-            value={gain.name || ""}
-            onChange={updateNamegain}
+            value={newGain.name || ""}
+            onChange={handleChangeFields}
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
@@ -56,8 +72,8 @@ const FormBudget = () => {
             className=""
             type="text"
             name="value"
-            value={gain.value || ""}
-            onChange={updateValuegain}
+            value={newGain.value || ""}
+            onChange={handleChangeFields}
             type="text"
             placeholder="Entrez sa valeur"
           />
@@ -67,9 +83,29 @@ const FormBudget = () => {
         </Button>
       </Form>
       <p>
-        j'ai recu <strong>{gain.name}</strong> qui a pour valeur :{" "}
-        <strong>{gain.value}</strong> €
+        j'ai recu <strong>{newGain.name}</strong> qui a pour valeur :{" "}
+        <strong>{newGain.value}</strong> €
       </p>
+      <ul>
+        {/* {gains.map((gain, index) => <p key={index}>{gain}</p>)} */}
+        {/* {Object.keys(gain).map((elem, index) => (
+          <div key={index}>
+            La clé est => {index.elem} et sa valeur => {gain[elem]},
+          </div>
+        ))}*/}
+        {Object.entries(newGain).forEach(([key, value]) => {
+          console.log(`${key} ${value}`);
+          // .map(([key, elem]) => (
+          //   <div key={key}>
+          //     {key} => {elem} {elem.value}
+          //   </div>
+        })}
+        {/* // ))} */}
+          {/* <li>{newGain}</li> */}
+        <li>
+          {newGain.name}: {newGain.value} €
+        </li>
+      </ul>
     </>
   );
 };

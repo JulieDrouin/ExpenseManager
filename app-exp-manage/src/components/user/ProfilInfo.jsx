@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Jumbotron, Container, Row, Col, Image, Button } from "react-bootstrap";
 
 const ProfilInfo = () => {
-  const [user, setUser] = useState({
+  const [User, setUser] = useState({
     firstname: "Paulette",
     lastname: "Dujardin",
     image: "../../img/paulette.jpg",
-    desc: "Je suis Paulette Dujardin !",
+    desc: "Je suis ruinée !",
+    solde: 0,
   });
   return (
     <Jumbotron fluid style={{ fontFamily: "Oswald" }}>
@@ -22,12 +23,15 @@ const ProfilInfo = () => {
           </Col>
           <Col style={{ fontFamily: "Source Sans Pro" }}>
             <h5>
-              Prénom : <strong>{user.firstname}</strong>
+              Prénom : <strong>{User.firstname}</strong>
             </h5>
             <h6>
-              Nom : <strong>{user.lastname}</strong>
+              Nom : <strong>{User.lastname}</strong>
             </h6>
-            <p>Description : {user.desc}</p>
+            <p>Description : {User.desc}</p>
+            <p>
+              Solde : <strong>{User.solde} €</strong>
+            </p>
           </Col>
         </Row>
         <br />

@@ -4,7 +4,7 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 const NavBar = ({ theme, toggleTheme }) => {
   return (
     <Navbar bg="light" expand="lg" style={{ fontFamily: "Oswald" }}>
-      <Navbar.Brand href="/profil">Gestionnaire de Dépenses</Navbar.Brand>
+      <Navbar.Brand href="/user/profilInfo">Gestionnaire de Dépenses</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-center">
         <Nav className="">
